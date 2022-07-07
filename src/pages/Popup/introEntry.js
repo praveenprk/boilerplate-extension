@@ -5,7 +5,6 @@ import Popup from './Popup';
 import './index.css';
 import Intro from './Intro';
 
-render(<Popup />, window.document.querySelector('#app-container'));
 render(<Intro />, window.document.querySelector('#main-container'));
 
 if (module.hot) module.hot.accept();
