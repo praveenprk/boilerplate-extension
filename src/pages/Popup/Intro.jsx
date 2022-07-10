@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState } from 'react';
+import AuthComponent from './AuthComponent';
 import {
   getTabId,
   fetchChildrenBookmark,
@@ -29,7 +30,6 @@ const Intro = () => {
 
   return (
     <>
-      <p>fds</p>
       <h1>Boilerplate extension</h1>
       <button id="tabCheck" onClick={() => getTabId()}>
         Get Tab Index
@@ -142,6 +142,7 @@ const Intro = () => {
             let token = await getAccessTokenSilently();
             //get token only
             console.log(token);
+            localStorage.setItem('access_token', token);
           }}
         >
           Get Access Token Silently
@@ -152,12 +153,20 @@ const Intro = () => {
             let claim = await getIdTokenClaims();
             //get all details
             console.log(claim);
+            /* document.querySelector('#token_claim').innerText =
+              JSON.stringify(claim); */
+            localStorage.setItem('token_claim', JSON.stringify(claim));
           }}
         >
           Get ID Token Claims
         </button>
       </span>
-      <ul></ul>
+      <div style={{ float: 'right' }}>
+        Token ID:<span id="token_id"></span>
+        <br />
+        Token Claim:<span id="token_claim"></span>
+      </div>
+      <AuthComponent />
     </>
   );
 };

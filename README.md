@@ -1,5 +1,21 @@
 <img src="src/assets/img/icon-128.png" width="64"/>
 
+# https://community.auth0.com/t/automatic-login-with-no-user-interaction/71398/3
+
+# https://community.auth0.com/t/silent-auto-login-for-user-after-completing-authentication-api-backed-custom-signup-form/29790/2
+
+# https://www.youtube.com/watch?v=yf2Hge3VHKY
+
+# https://www.youtube.com/watch?v=996OiexHze0
+
+# https://www.pingidentity.com/en/resources/content-library/articles/openid-connect.html
+
+# https://auth0.com/docs/get-started/authentication-and-authorization-flow
+
+# https://auth0.com/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use
+
+# https://auth0.com/docs/authenticate/login/configure-silent-authentication
+
 # Chrome Extension Boilerplate with React 17 and Webpack 5
 
 [![npm](https://img.shields.io/npm/v/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
