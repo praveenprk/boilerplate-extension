@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState } from 'react';
 import {
@@ -12,11 +13,23 @@ const Intro = () => {
   const [tree, setTree] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
 
-  //working
-  // console.log(bookmarks);
-  // console.log(tree);
+  const {
+    isLoading,
+    isAuthenticated,
+    error,
+    user,
+    loginWithRedirect,
+    loginWithPopup,
+    logout,
+    getAccessTokenSilently,
+    getIdTokenClaims,
+  } = useAuth0();
+
+  console.log(user);
+
   return (
     <>
+      <p>fds</p>
       <h1>Boilerplate extension</h1>
       <button id="tabCheck" onClick={() => getTabId()}>
         Get Tab Index
@@ -116,7 +129,35 @@ const Intro = () => {
               </>;
             })}
         </ul>
+        <button onClick={loginWithPopup}>Login</button>
+        <button onClick={loginWithRedirect}>Login with Redirect</button>
       </div>
+      <span>{isAuthenticated ? 'Logged In' : 'Logged Out'}</span>
+      <span>
+        {isAuthenticated ? <button onClick={logout}>LogOut</button> : ''}
+      </span>
+      <span>
+        <button
+          onClick={async () => {
+            let token = await getAccessTokenSilently();
+            //get token only
+            console.log(token);
+          }}
+        >
+          Get Access Token Silently
+        </button>
+        <br />
+        <button
+          onClick={async () => {
+            let claim = await getIdTokenClaims();
+            //get all details
+            console.log(claim);
+          }}
+        >
+          Get ID Token Claims
+        </button>
+      </span>
+      <ul></ul>
     </>
   );
 };

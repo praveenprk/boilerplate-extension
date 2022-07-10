@@ -2,11 +2,24 @@ import React from 'react';
 import { useState } from 'react';
 import logo from '../../assets/img/logo.svg';
 import Greetings from '../../containers/Greetings/Greetings';
-import { getTabId, openPage } from './Functions';
+import { getTabId, openLoginPage, openPage } from './Functions';
 import './Popup.css';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Popup = () => {
   const [tabId, setTabId] = useState(null);
+
+  const {
+    isLoading,
+    isAuthenticated,
+    error,
+    user,
+    loginWithRedirect,
+    loginWithPopup,
+    logout,
+  } = useAuth0();
+
+  // alert(isAuthenticated);
 
   return (
     <div className="App">
@@ -35,6 +48,12 @@ const Popup = () => {
       <br></br>
       <button id="showBookmarks">Show Bookmarks</button>
       <br></br>
+      {/*  <button id="login" onClick={() => openLoginPage()}>
+        Login
+      </button> */}
+      <button onClick={loginWithPopup}>Log in</button>
+      <button onClick={loginWithRedirect}>Log in Redirect</button>
+      <p>{isAuthenticated ? <button onClick={logout}>Logout</button> : ''}</p>
     </div>
   );
 };

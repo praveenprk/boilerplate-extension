@@ -186,6 +186,12 @@ var options = {
       cache: false,
     }),
     new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'pages', 'Popup', 'login.html'),
+      filename: 'login.html',
+      chunks: ['login'],
+      cache: false,
+    }),
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.html'),
       filename: 'devtools.html',
       chunks: ['devtools'],

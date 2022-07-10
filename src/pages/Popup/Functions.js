@@ -11,6 +11,12 @@ export const openPage = () => {
   });
 };
 
+export const openLoginPage = () => {
+  chrome.tabs.create({
+    url: 'login.html',
+  });
+};
+
 /* export function renderBookmarks(bookmarksList) {
   let bookmarkDiv = document.getElementById('bookmarks');
   console.log(bookmarkDiv);
