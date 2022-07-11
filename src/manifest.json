@@ -4,11 +4,16 @@
   "description": "A bookmarks chrome extension boilerplate",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqNel+WQRroGtWIzyDPLTYNTPfqCb9lB0dzBRw9ToPSs+ZIwrzFbsenI82MHYbO8ZfCkSZvfDZ5l8UkLiwfw+iaYW7H6FNFijqG891DRgN6US2NIV8EdzOXoe5NEUGY0hg9ilgYqHjjbmPvKPc/wuLU8VhzuemWv9dK17lKXzcrYhOlKWiFo6Ue5Zm0PpX3Cba+XV0mgeoMBFdhGeCEWuM5Iag2yBp5J8Uu1hNQjRhKmRmx6lWL/I5iYv7nv7D3066lJgm4q5tYtIki/1Fk5rYVgyA8xoea/U9dpwHIv36uvmDmkq+FkAvyYwO8ciBj7/Jzq4v1Mbz6oXMJLAAbNMOQIDAQAB",
+  "oauth2": {
+    "client_id": "968640932973-mcpc6lij7sb35urv4mv20sv3k6g32h5n.apps.googleusercontent.com",
+    "scopes": [ "profile email" ]
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34.png"
   },
-  "permissions": ["scripting", "tabs", "activeTab", "bookmarks","identity"],
+  "permissions": ["scripting", "tabs", "activeTab", "bookmarks","identity", "identity.email"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },

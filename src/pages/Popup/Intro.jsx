@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthComponent from './AuthComponent';
 import {
   getTabId,
@@ -26,7 +26,8 @@ const Intro = () => {
     getIdTokenClaims,
   } = useAuth0();
 
-  console.log(user);
+  
+  
 
   return (
     <>
@@ -99,6 +100,7 @@ const Intro = () => {
                   <li>
                     <a
                       target="_blank"
+                      rel="noreferrer"
                       href={`${bookmark.url}`}
                     >{`${bookmark.id} => ${bookmark.title}`}</a>
                   </li>
@@ -129,6 +131,15 @@ const Intro = () => {
               </>;
             })}
         </ul>
+        <button onClick={() => {
+          chrome.identity.getAuthToken({'interactive':true},(token, grantedScopes)=>{
+            console.log(token);
+            console.log(grantedScopes);
+            chrome.identity.getProfileUserInfo({accountStatus:'ANY'},function(userInfo){
+              console.log(userInfo);
+            })
+          });
+        }}>Login with Google</button><br/>
         <button onClick={loginWithPopup}>Login</button>
         <button onClick={loginWithRedirect}>Login with Redirect</button>
       </div>

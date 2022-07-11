@@ -1,6 +1,11 @@
 <img src="src/assets/img/icon-128.png" width="64"/>
 
 # Important Resources
+
+# Login in Popup Using
+
+# https://community.auth0.com/t/ultimate-guide-to-auth0-in-a-chrome-extension-popup/61362/2
+
 # https://community.auth0.com/t/automatic-login-with-no-user-interaction/71398/3
 
 # https://community.auth0.com/t/silent-auto-login-for-user-after-completing-authentication-api-backed-custom-signup-form/29790/2

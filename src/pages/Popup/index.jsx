@@ -10,7 +10,7 @@ render(
   <Auth0Provider
     domain="dev-ouciyri7.us.auth0.com"
     clientId="uN9Oca9Eax7C4C6cg2EmEy7Yd11UtCd7"
-    redirectUri="chrome-extension://aoijeimniacifhfjeapgpailmaokcgdm/intro.html"
+    redirectUri="chrome-extension://gnpfhidgpkhliopbgbphicbkkamjefff/intro.html"
   >
     <Popup />
   </Auth0Provider>,

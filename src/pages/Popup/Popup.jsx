@@ -1,13 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
-import logo from '../../assets/img/logo.svg';
-import Greetings from '../../containers/Greetings/Greetings';
-import { getTabId, openLoginPage, openPage } from './Functions';
+import { useState, useEffect } from 'react';
+import { getTabId, openPage } from './Functions';
 import './Popup.css';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Popup = () => {
-  const [tabId, setTabId] = useState(null);
+  // const [tabId, setTabId] = useState(null);
 
   const {
     isLoading,
@@ -19,12 +17,17 @@ const Popup = () => {
     logout,
   } = useAuth0();
 
-  // alert(isAuthenticated);
+  const [auth, setAuth] = useState(false)
+  
+  useEffect(() => {
+    setAuth(isAuthenticated)
+  }, [isAuthenticated])
 
   return (
     <div className="App">
       {/* <header className="App-header">
       </header> */}
+      <p>isAuth:</p><span id="isAuth">{`${auth}`}</span><br/>
       <span id="tabId"></span>
       <button id="tabCheck" onClick={() => getTabId()}>
         Get Tab Index
@@ -36,6 +39,13 @@ const Popup = () => {
       <br></br>
       <button id="back">Go Back</button>
       <br></br>
+      <button id="checkIfAuth" onClick={() =>{
+        if(isAuthenticated){
+          alert('isAuthenticated');
+        }else{
+          alert('notAuthenticated');
+        }
+      }}>Check if Auth</button><br></br>
       <button id="getChildren1">Get Bookmarks Bar</button>
       <br></br>
       <button id="getChildren2">Get Other Bookmarks</button>
