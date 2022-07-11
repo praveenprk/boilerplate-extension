@@ -51,6 +51,7 @@ const Intro = () => {
       >
         Get Other Bookmarks
       </button>
+
       <button
         id="getChildren3"
         onClick={() => {
@@ -59,10 +60,9 @@ const Intro = () => {
       >
         Get Mobile Bookmarks
       </button>
-      {/* <button id="getOnly">Get Only</button> */}
+      
 
-      <button id="update">Update</button>
-      {/* <button id="showBookmarks">Show Bookmarks</button> */}
+      <button id="update">Update</button>  
       <div>
         <label htmlFor="delete">Delete ID</label>
         <input

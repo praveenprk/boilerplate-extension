@@ -1,7 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import logo from '../../assets/img/logo.svg';
-import Greetings from '../../containers/Greetings/Greetings';
 import { getTabId, openLoginPage, openPage } from './Functions';
 import './Popup.css';
 import { useAuth0 } from '@auth0/auth0-react';
