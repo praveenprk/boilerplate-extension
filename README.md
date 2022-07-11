@@ -1,5 +1,6 @@
 <img src="src/assets/img/icon-128.png" width="64"/>
 
+# Important Resources
 # https://community.auth0.com/t/automatic-login-with-no-user-interaction/71398/3
 
 # https://community.auth0.com/t/silent-auto-login-for-user-after-completing-authentication-api-backed-custom-signup-form/29790/2
