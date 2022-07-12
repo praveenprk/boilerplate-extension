@@ -1,7 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import AuthComponent from './AuthComponent';
+import ExternalApi from './ExternalApi';
+import AuthComponent from './ExternalApi';
 import {
   getTabId,
   fetchChildrenBookmark,
@@ -27,8 +28,6 @@ const Intro = () => {
   } = useAuth0();
 
   
-  
-
   return (
     <>
       <h1>Boilerplate extension</h1>
@@ -177,8 +176,8 @@ const Intro = () => {
         <br />
         Token Claim:<span id="token_claim"></span>
       </div>
-      <AuthComponent />
-    </>
+      <ExternalApi/>
+      </>
   );
 };
 

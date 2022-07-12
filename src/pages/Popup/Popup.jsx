@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getTabId, openPage } from './Functions';
+import { openPage } from './Functions';
 import './Popup.css';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -28,25 +28,15 @@ const Popup = () => {
       {/* <header className="App-header">
       </header> */}
       <p>isAuth:</p><span id="isAuth">{`${auth}`}</span><br/>
-      <span id="tabId"></span>
-      <button id="tabCheck" onClick={() => getTabId()}>
-        Get Tab Index
-      </button>
       <br></br>
       <button id="checkBtn" onClick={() => openPage()}>
-        Check
+        Login
       </button>
       <br></br>
-      <button id="back">Go Back</button>
-      <br></br>
-      <button id="checkIfAuth" onClick={() =>{
-        if(isAuthenticated){
-          alert('isAuthenticated');
-        }else{
-          alert('notAuthenticated');
-        }
-      }}>Check if Auth</button><br></br>
-      <button id="getChildren1">Get Bookmarks Bar</button>
+      {/* <button id="back">Go Back</button> */}
+      {/* <br></br> */}
+      
+      {/* <button id="getChildren1">Get Bookmarks Bar</button>
       <br></br>
       <button id="getChildren2">Get Other Bookmarks</button>
       <br></br>
@@ -56,7 +46,7 @@ const Popup = () => {
       <br></br>
       <button id="update">Update</button>
       <br></br>
-      <button id="showBookmarks">Show Bookmarks</button>
+      <button id="showBookmarks">Show Bookmarks</button> */}
       <br></br>
       {/*  <button id="login" onClick={() => openLoginPage()}>
         Login
