@@ -21,16 +21,24 @@ const ExternalApi = () => {
 
   const callSecureApi = async () => {
     try {
-      const token = await getAccessTokenSilently();
-
-      localStorage.setItem('access_token', token)
-      const lToken = localStorage.getItem('access_token')
+      let lToken;
+      // let token = await getAccessTokenSilently();
+      let token;
+      const isToken = localStorage.getItem('access_token'); 
+      
+      if(!isToken) {
+        token = await getAccessTokenSilently();
+        localStorage.setItem('access_token', token);
+        token = localStorage.getItem('access_token');
+      } else {
+        token = localStorage.getItem('access_token');
+      }
 
       const response = await fetch(
         `http://localhost:6060/api/messages/protected-message/`,
         {
           headers: {
-            'Authorization': `Bearer ${lToken}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         },
