@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ExternalApi from './ExternalApi';
-import AuthComponent from './ExternalApi';
+import { useSearchParams } from "react-router-dom";
 import {
   getTabId,
   fetchChildrenBookmark,
@@ -27,6 +27,11 @@ const Intro = () => {
     getIdTokenClaims,
   } = useAuth0();
 
+  // console.log(user)
+  // const { code } = useSearchParams();
+  const queryParams = new URLSearchParams(window.location.search);
+  const code = queryParams.get('code');
+  console.log(code)
   
   return (
     <>
@@ -176,6 +181,9 @@ const Intro = () => {
         <br />
         Token Claim:<span id="token_claim"></span>
       </div>
+      <p>
+        
+      </p>
       <ExternalApi/>
       </>
   );

@@ -2,6 +2,8 @@
 
 # Important Resources
 
+# https://auth0.com/docs/api/authentication?javascript#errors
+
 # Login in Popup Using
 
 # https://community.auth0.com/t/ultimate-guide-to-auth0-in-a-chrome-extension-popup/61362/2

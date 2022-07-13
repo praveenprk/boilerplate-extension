@@ -19,9 +19,10 @@ const ExternalApi = () => {
     }
   };
 
+  
+
   const callSecureApi = async () => {
     try {
-      let lToken;
       // let token = await getAccessTokenSilently();
       let token;
       const isToken = localStorage.getItem('access_token'); 
@@ -53,6 +54,42 @@ const ExternalApi = () => {
     }
   };
 
+  const callRefreshToken = async () => {
+    
+    let token;
+    const isToken = localStorage.getItem('access_token');
+    
+    if(!isToken) {
+      token = await getAccessTokenSilently();
+      localStorage.setItem('access_token', token);
+      token = localStorage.getItem('access_token');
+    } else {
+      token = localStorage.getItem('access_token');
+    }
+
+    const response = await fetch(
+      `https://dev-ouciyri7.us.auth0.com/oauth/token`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          grant_type: 'refresh_token',
+          response_type: 'code',
+          refresh_token: 'v1.MS7dM_XzKfJHj7IGOeSADXCkAvVFjp3S6xW_EkeNW51gpIQaagvWnqQWITAjpmcCsW97zL0QOowDCWBeqZXrcNU',
+          client_id: "uN9Oca9Eax7C4C6cg2EmEy7Yd11UtCd7",
+          redirect_uri: "chrome-extension://gnpfhidgpkhliopbgbphicbkkamjefff/intro.html",
+          audience: "https://express.sample",
+        }),
+      },
+    );
+
+    const responseData = await response.json();
+    console.log(responseData)
+  }
+
   return (
     <div>
       <h1>External API</h1>
@@ -74,6 +111,12 @@ const ExternalApi = () => {
           onClick={callSecureApi}
         >
           Get Protected Message
+        </button>
+        <button
+          type="button"
+          onClick={callRefreshToken}
+        >
+          Get Refresh Token
         </button>
       </div>
       {message && (
