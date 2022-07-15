@@ -18,6 +18,8 @@ render(
     clientId="uN9Oca9Eax7C4C6cg2EmEy7Yd11UtCd7"
     redirectUri="chrome-extension://gnpfhidgpkhliopbgbphicbkkamjefff/intro.html"
     useRefreshTokens={true}
+    cacheLocation="localstorage"
+    // cacheLocation="memory"
     audience="https://express.sample"
   > 
     <Intro />

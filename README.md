@@ -2,6 +2,10 @@
 
 # Important Resources
 
+# Refresh Token from Class LocalStorageCache
+
+# https://auth0.github.io/auth0-react/classes/LocalStorageCache.html#allKeys
+
 # https://auth0.com/docs/api/authentication?javascript#errors
 
 # Login in Popup Using

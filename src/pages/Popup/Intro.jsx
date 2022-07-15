@@ -1,4 +1,4 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { LocalStorageCache, useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ExternalApi from './ExternalApi';
@@ -14,6 +14,7 @@ const Intro = () => {
   const [bookmarks, setBookmarks] = useState([]);
   const [tree, setTree] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
 
   const {
     isLoading,
@@ -26,13 +27,24 @@ const Intro = () => {
     getAccessTokenSilently,
     getIdTokenClaims,
   } = useAuth0();
-
-  // console.log(user)
-  // const { code } = useSearchParams();
-  const queryParams = new URLSearchParams(window.location.search);
-  const code = queryParams.get('code');
-  console.log(code)
   
+
+  useEffect(() => {
+    const storageCache = new LocalStorageCache();
+    const key = storageCache.allKeys().find(key => key.includes('auth0spa'));
+    // const key = storageCache.set('token11', 'auth0spa');
+    const refresh_token_value = storageCache.get(key);
+    const finalRefreshToken = refresh_token_value?.body?.refresh_token
+    localStorage.setItem('refresh_token', finalRefreshToken);
+    setRefreshToken(finalRefreshToken);
+    return () =>{
+      setRefreshToken(null);
+    }
+  },[isAuthenticated])
+   
+  
+  console.log(refreshToken)
+
   return (
     <>
       <h1>Boilerplate extension</h1>

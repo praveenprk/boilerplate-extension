@@ -58,6 +58,7 @@ const ExternalApi = () => {
     
     let token;
     const isToken = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
     
     if(!isToken) {
       token = await getAccessTokenSilently();
@@ -78,9 +79,35 @@ const ExternalApi = () => {
         body: JSON.stringify({
           grant_type: 'refresh_token',
           response_type: 'code',
-          refresh_token: 'v1.MS7dM_XzKfJHj7IGOeSADXCkAvVFjp3S6xW_EkeNW51gpIQaagvWnqQWITAjpmcCsW97zL0QOowDCWBeqZXrcNU',
+          refresh_token: refreshToken,
           client_id: "uN9Oca9Eax7C4C6cg2EmEy7Yd11UtCd7",
           redirect_uri: "chrome-extension://gnpfhidgpkhliopbgbphicbkkamjefff/intro.html",
+          audience: "https://express.sample",
+        }),
+      },
+    );
+
+    const responseData = await response.json();
+    console.log(responseData)
+    localStorage.setItem('access_token', responseData.access_token);
+    localStorage.setItem('refresh_token', responseData.refresh_token);
+  }
+
+
+  const callAuthCode = async () => {
+    const token = localStorage.getItem('access_token');
+    const response = await fetch(
+      `https://dev-ouciyri7.us.auth0.com/oauth/device/code`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          client_id: "uN9Oca9Eax7C4C6cg2EmEy7Yd11UtCd7",
+          grant_type: "code",
+          scope: "openid profile email offline_access",
           audience: "https://express.sample",
         }),
       },
@@ -117,6 +144,9 @@ const ExternalApi = () => {
           onClick={callRefreshToken}
         >
           Get Refresh Token
+        </button>
+        <button onClick={callAuthCode}>
+          Get Device Authorization Code
         </button>
       </div>
       {message && (
