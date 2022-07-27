@@ -3,13 +3,13 @@ import { render } from 'react-dom';
 
 import Popup from './Popup';
 import './index.css';
-import Intro from './Intro';
+// import Intro from './Intro';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 /* const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
- */
+const audience = process.env.REACT_APP_AUTH0_AUDIENCE; */
+ 
 render(
   <Auth0Provider
     domain="dev-ouciyri7.us.auth0.com"
@@ -22,9 +22,7 @@ render(
   > 
     <Popup />
   </Auth0Provider>,
-  window.document.querySelector('#app-container')
+  window.document.getElementById("app-container")
 );
-
-render(<Intro />, window.document.querySelector('#main-container'));
 
 if (module.hot) module.hot.accept();

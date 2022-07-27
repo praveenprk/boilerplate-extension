@@ -120,11 +120,11 @@ const ExternalApi = () => {
   return (
     <div>
       <h1>External API</h1>
-      <p>
+      {/* <p>
         Use these buttons to call an external API. The protected API call has an
         access token in its authorization header. The API server will validate
         the access token using the Auth0 Audience value.
-      </p>
+      </p> */}
       <div
         
         role="group"

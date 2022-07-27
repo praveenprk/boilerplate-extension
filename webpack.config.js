@@ -43,7 +43,7 @@ var options = {
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
     devtools: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.js'),
     panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx'),
-    intro: path.join(__dirname, 'src', 'pages', 'Popup', 'introEntry.js'),
+    intro: path.join(__dirname, 'src', 'pages', 'Dashboard', 'introEntry.js'),
   },
   chromeExtensionBoilerplate: {
     notHotReload: ['background', 'contentScript', 'devtools'],
@@ -174,21 +174,21 @@ var options = {
       cache: false,
     }),
     new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'pages', 'Profile', 'profile.html'),
+      filename: 'profile.html',
+      chunks: ['profile'],
+      cache: false,
+    }),
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'pages', 'Popup', 'index.html'),
       filename: 'popup.html',
       chunks: ['popup'],
       cache: false,
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'pages', 'Popup', 'intro.html'),
+      template: path.join(__dirname, 'src', 'pages', 'Dashboard', 'intro.html'),
       filename: 'intro.html',
       chunks: ['intro'],
-      cache: false,
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'pages', 'Popup', 'login.html'),
-      filename: 'login.html',
-      chunks: ['login'],
       cache: false,
     }),
     new HtmlWebpackPlugin({

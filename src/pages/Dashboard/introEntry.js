@@ -1,15 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-// import Popup from './Popup';
-import './index.css';
-import Intro from './Intro';
 import { Auth0Provider } from '@auth0/auth0-react';
-import { BrowserRouter } from 'react-router-dom';
-
-/* const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const audience = process.env.REACT_APP_AUTH0_AUDIENCE; */
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Intro from './Intro';
+import Profile from '../../components/Profile/Profile';
 
 render(
   <BrowserRouter>
@@ -19,13 +14,15 @@ render(
     redirectUri="chrome-extension://gnpfhidgpkhliopbgbphicbkkamjefff/intro.html"
     useRefreshTokens={true}
     cacheLocation="localstorage"
-    // cacheLocation="memory"
     audience="https://express.sample"
   > 
-    <Intro />
+    <Intro/>
+    {/* <Routes>
+      <Route exact path="/profile.html" element={<Profile/>} />
+    </Routes> */}
   </Auth0Provider>
   </BrowserRouter>,
-  window.document.querySelector('#main-container')
+  document.querySelector('#main-container')
 );
 
-if (module.hot) module.hot.accept();
+if (module.hot) module.hot.accept();  
